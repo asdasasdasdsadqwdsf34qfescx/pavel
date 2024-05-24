@@ -11,7 +11,7 @@ const db = new sqlite3.Database('database.db');
 
 db.run('CREATE TABLE IF NOT EXISTS texts (text TEXT)');
 
-app.post('/addText', express.json(), (req, res) => {
+app.post('/addTex', express.json(), (req, res) => {
   const text = req.body.text;
 
   db.run('INSERT INTO texts (text) VALUES (?)', [text], function (err) {
