@@ -1,24 +1,12 @@
 name: CI/CD Pipeline\
 
-
 on:
   push:
     branches:
-      - main
-  workflow_call:
-      inputs:
-        config-path:
-          required: true
-          type: string
-      secrets:
-        envPAT:
-          required: true      
+      - main     
 
 jobs:
   build:
-    env:
-      DOCKER_USERNAME: ${{ secret.DOCKER_USERNAME }}
-      DOCKER_PASSWORD: ${{ secret.DOCKER_PASSWORD }}
     runs-on: ubuntu-latest
 
     steps:
@@ -31,8 +19,8 @@ jobs:
       - name: Log in to Docker Hub
         uses: docker/login-action@v1
         with:
-          username: $DOCKER_USERNAME
-          password: $DOCKER_PASSWORD  # Ensure you have set DOCKER_PASSWORD in your GitHub secrets
+          username: ${{ env.DOCKER_USERNAME }}
+          password: ${{ env.DOCKER_PASSWORD }}  # Ensure you have set DOCKER_PASSWORD in your GitHub secrets
 
       - name: Build and push database image
         uses: docker/build-push-action@v2
