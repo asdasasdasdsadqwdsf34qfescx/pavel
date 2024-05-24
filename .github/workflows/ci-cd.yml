@@ -58,5 +58,6 @@ jobs:
 
       - name: Deploy to Kubernetes
         run: |
-          kubectl apply -f ./service.yaml
-          kubectl apply -f ./workloads.yaml
+          kubectl apply -f service.yaml
+          kubectl apply -f workloads.yaml
+        working-directory: ${{ github.workspace }}
