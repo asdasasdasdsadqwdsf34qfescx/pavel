@@ -25,13 +25,13 @@ jobs:
       - name: Build and push database image
         uses: docker/build-push-action@v2
         with:
-          context: Lab1-bd\Dockerfile
+          context: Lab1-bd/Dockerfile
           tags: bloodysoon/laborator_1:latest
 
       - name: Build and push frontend image
         uses: docker/build-push-action@v2
         with:
-          context: Lab2-front\Dockerfile
+          context: Lab2-front/Dockerfile
           tags: bloodysoon/laborator_2:latest
 
   deploy:
