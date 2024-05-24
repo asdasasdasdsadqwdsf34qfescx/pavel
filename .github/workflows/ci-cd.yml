@@ -1,7 +1,5 @@
 name: CI/CD Pipeline\
-env:
-    DOCKER_USERNAME: ${{ secret.DOCKER_USERNAME }}
-    DOCKER_PASSWORD: ${{ secret.DOCKER_PASSWORD }}
+
 
 on:
   push:
@@ -18,6 +16,9 @@ on:
 
 jobs:
   build:
+    env:
+      DOCKER_USERNAME: ${{ secret.DOCKER_USERNAME }}
+      DOCKER_PASSWORD: ${{ secret.DOCKER_PASSWORD }}
     runs-on: ubuntu-latest
 
     steps:
