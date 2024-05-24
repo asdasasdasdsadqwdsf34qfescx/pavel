@@ -1,0 +1,12 @@
+version: '3'
+
+services:
+  web:
+    image: lab2
+    ports:
+      - '8080:80'
+
+  node:
+    image: lab1
+    ports:
+      - '3000:3000'

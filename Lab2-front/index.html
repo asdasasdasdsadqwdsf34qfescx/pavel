@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  </head>
+  <body>
+    <h1>Add text:</h1>
+    <input type="text" id="textInput" />
+    <button onclick="addText()">Add</button>
+
+    <h2>Added texts:</h2>
+    <ul id="textList"></ul>
+
+    <script>
+      function addText() {
+        const text = document.getElementById('textInput').value;
+        fetch(`http://localhost:30010/addText`, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            text,
+          }),
+        })
+          .then((response) => response.text())
+          .then((data) => {
+            getTexts();
+          })
+          .catch((error) => console.error('Error:', error));
+      }
+
+      function getTexts() {
+        fetch('http://localhost:30010/getTexts')
+          .then((response) => response.json())
+          .then((data) => {
+            const textList = document.getElementById('textList');
+            textList.innerHTML = '';
+            data.forEach((text) => {
+              const li = document.createElement('li');
+              li.textContent = text;
+              textList.appendChild(li);
+            });
+          })
+          .catch((error) => console.error('error:', error));
+      }
+
+      getTexts();
+    </script>
+  </body>
+</html>
