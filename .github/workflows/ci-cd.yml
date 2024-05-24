@@ -19,8 +19,8 @@ jobs:
       - name: Log in to Docker Hub
         uses: docker/login-action@v1
         with:
-          username: ${{ env.DOCKER_USERNAME }}
-          password: ${{ env.DOCKER_PASSWORD }}
+          username: bloodysoon
+          password: madrid12489988
 
       - name: Build and push database image
         uses: docker/build-push-action@v2
