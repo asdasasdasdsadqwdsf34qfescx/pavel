@@ -46,7 +46,6 @@ jobs:
         uses: azure/setup-kubectl@v1
         with:
           version: 'latest'
-          - name: Set up Kubeconfig
 
       - name: Set up Kubeconfig
         run: |
