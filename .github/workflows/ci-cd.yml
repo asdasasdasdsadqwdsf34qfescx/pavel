@@ -33,7 +33,7 @@ jobs:
         uses: docker/build-push-action@v2
         with:
           context: ./Lab2
-          file: ./Lab2-bd/Dockerfile
+          file: ./Lab2-front/Dockerfile
           tags: bloodysoon/laborator_2:latest
 
   deploy:
